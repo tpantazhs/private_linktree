@@ -1,80 +1,280 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kyro Renn</title>
+    <title>Timotheos Pantazis</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --purple-deep:    #2D0057;
+            --purple-mid:     #6B21A8;
+            --purple-bright:  #A855F7;
+            --purple-light:   #D8B4FE;
+            --purple-glow:    #C084FC;
+            --white:          #FAFAFA;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-image: url('https://github.com/tpantazhs/portfolio/blob/main/assets/profilepic.jpg?raw=true'); /* Your background image */
-            background-size: cover;
-            background-position: center;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            color: #fff;
+            background-color: #0a0010;
+            overflow: hidden;
+            position: relative;
         }
-        .container {
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for readability */
-            padding: 40px;
-            border-radius: 15px;
-            text-align: center;
-            max-width: 600px;
-            width: 100%;
-        }
-        h1 {
-            font-size: 36px;
-            margin-bottom: 30px;
-        }
-        .logo {
-            width: 120px;
+
+        /* Animated background orbs */
+        .bg-orb {
+            position: fixed;
             border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.18;
+            animation: drift 12s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+        .bg-orb-1 {
+            width: 500px; height: 500px;
+            background: var(--purple-mid);
+            top: -150px; left: -150px;
+            animation-duration: 14s;
+        }
+        .bg-orb-2 {
+            width: 400px; height: 400px;
+            background: var(--purple-bright);
+            bottom: -100px; right: -100px;
+            animation-duration: 10s;
+            animation-delay: -5s;
+        }
+        .bg-orb-3 {
+            width: 300px; height: 300px;
+            background: var(--purple-light);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            animation-duration: 16s;
+            animation-delay: -8s;
+        }
+
+        @keyframes drift {
+            0%   { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(40px, 30px) scale(1.08); }
+        }
+
+        /* Noise grain overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.5;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 480px;
+            padding: 48px 32px;
+            text-align: center;
+            animation: fadeUp 0.8s ease both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Avatar ring */
+        .avatar-wrapper {
+            position: relative;
+            display: inline-block;
             margin-bottom: 20px;
         }
+        .avatar-ring {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: conic-gradient(var(--purple-bright), var(--purple-light), var(--purple-mid), var(--purple-bright));
+            padding: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: spinOnce 1s ease forwards;
+        }
+        .avatar-ring.spinning {
+            animation: spinRing 6s linear infinite;
+        }
+        @keyframes spinOnce {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+        }
+        @keyframes spinRing {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+        }
+        .avatar-inner {
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            background: #0a0010;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .avatar-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        h1 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 34px;
+            color: var(--white);
+            letter-spacing: 0.5px;
+            word-spacing: 4px;
+            margin-bottom: 8px;
+            animation: fadeUp 0.8s 0.1s ease both;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            font-weight: 300;
+            color: var(--purple-light);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            opacity: 0.8;
+            animation: fadeUp 0.8s 0.2s ease both;
+        }
+
+        /* Divider */
+        .divider {
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--purple-bright), transparent);
+            margin: 0 auto 36px;
+            animation: fadeUp 0.8s 0.25s ease both;
+        }
+
+        /* Links */
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
         .link {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 15px;
-            margin: 10px 0;
-            background-color: #4CAF50;
-            color: white;
+            gap: 12px;
+            padding: 16px 28px;
+            background: rgba(168, 85, 247, 0.08);
+            color: var(--white);
             text-decoration: none;
-            border-radius: 10px;
-            font-size: 18px;
-            transition: background-color 0.3s;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            backdrop-filter: blur(10px);
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeUp 0.8s ease both;
         }
-        .link i {
-            margin-right: 10px;
-            font-size: 20px;
+
+        .link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(216, 180, 254, 0.05));
+            opacity: 0;
+            transition: opacity 0.25s ease;
         }
+
         .link:hover {
-            background-color: #45a049;
+            border-color: var(--purple-bright);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(168, 85, 247, 0.25);
         }
-        .link:active {
-            background-color: #388e3c;
+        .link:hover::before { opacity: 1; }
+        .link:active { transform: translateY(0); }
+
+        .link i {
+            font-size: 18px;
+            color: var(--purple-glow);
+            flex-shrink: 0;
+        }
+
+        /* Stagger animation delays */
+        .link:nth-child(1) { animation-delay: 0.3s; }
+        .link:nth-child(2) { animation-delay: 0.4s; }
+        .link:nth-child(3) { animation-delay: 0.5s; }
+        .link:nth-child(4) { animation-delay: 0.6s; }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 11px;
+            color: rgba(216, 180, 254, 0.3);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            animation: fadeUp 0.8s 0.7s ease both;
         }
     </style>
 </head>
 <body>
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+
     <div class="container">
-        <img src="https://github.com/tpantazhs/portfolio/blob/main/assets/profilepic.jpg="Logo" class="logo"> <!-- Replace with your logo URL -->
-        <h1>Kyro Renn</h1>
-        
-        <a href="https://www.youtube.com/@Kyrorenn" class="link" target="_blank">
-            <i class="fab fa-youtube"></i> YouTube
-        </a>
-        <a href="https://www.twitch.tv/kyrorenn" class="link" target="_blank">
-            <i class="fab fa-twitch"></i> Twitch
-        </a>
-        <a href="https://discord.gg/JngMeq8mWV" class="link" target="_blank">
-            <i class="fab fa-discord"></i> Discord
-        </a>
+        <div class="avatar-wrapper">
+            <div class="avatar-ring">
+                <div class="avatar-inner">
+                    <img src="https://github.com/tpantazhs/linktree/blob/main/assets/finallogo.png?raw=true" alt="Logo">
+                </div>
+            </div>
+        </div>
+
+        <h1>Timotheos Pantazis</h1>
+        <p class="subtitle">Fachinformatiker · Systemintegration</p>
+        <div class="divider"></div>
+
+        <div class="links">
+            <a href="https://tpantazhs.github.io/portfolio/" class="link" target="_blank">
+                <i class="fas fa-briefcase"></i>
+                Portfolio
+            </a>
+            <a href="https://www.instagram.com/" class="link" target="_blank">
+                <i class="fab fa-instagram"></i>
+                Instagram
+            </a>
+            <!-- Weitere Links können hier ergänzt werden -->
+        </div>
+
+        <p class="footer">© 2026 Timotheos Pantazis</p>
     </div>
+    <script>
+        const ring = document.querySelector('.avatar-ring');
+        ring.addEventListener('animationend', () => {
+            ring.classList.add('spinning');
+        }, { once: true });
+    </script>
 </body>
 </html>
