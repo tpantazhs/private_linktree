@@ -112,14 +112,7 @@
             justify-content: center;
             animation: spinOnce 1s ease forwards;
         }
-        .avatar-ring.spinning {
-            animation: spinRing 6s linear infinite;
-        }
         @keyframes spinOnce {
-            from { transform: rotate(0deg); }
-            to   { transform: rotate(360deg); }
-        }
-        @keyframes spinRing {
             from { transform: rotate(0deg); }
             to   { transform: rotate(360deg); }
         }
@@ -269,16 +262,9 @@
                 <i class="fab fa-instagram"></i>
                 Instagram
             </a>
-            <!-- Weitere Links können hier ergänzt werden -->
         </div>
 
         <p class="footer">© 2026 Timotheos Pantazis</p>
     </div>
-    <script>
-        const ring = document.querySelector('.avatar-ring');
-        ring.addEventListener('animationend', () => {
-            ring.classList.add('spinning');
-        }, { once: true });
-    </script>
 </body>
 </html>
