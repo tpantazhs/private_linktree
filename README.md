@@ -1,16 +1,16 @@
-## Hi there 👋
+# 🌲 Private Linktree
 
-<!--
-**tpantazhs/tpantazhs** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+**[Live Demo](https://tpantazhs.github.io/private_linktree/)**
 
-Here are some ideas to get you started:
+### ⚡ Why this?
+* **Serverless:** Hosted 100% on GitHub Pages. No backend or server costs.
+* **Lightweight:** Pure HTML/CSS. Zero dependencies, zero bloat.
+* **Private:** No trackers or third-party analytics.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+### 🛠️ Quick Start
+1. **Edit** `index.html` with your links.
+2. **Push** to GitHub.
+3. **Done.**
+
+---
+*By tpantazhs*
